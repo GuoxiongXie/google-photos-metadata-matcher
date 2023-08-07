@@ -1,3 +1,22 @@
+## Migrate Google Photos
+
+1. Export photos in https://takeout.google.com/
+2. Extract files into one folder
+  
+      If you have multiple .zip files you can extract with `ditto` in `macos`
+        
+        ditto -x -k *.zip ./takeout_photos
+       
+3. install dependencies of this project
+
+       cd google-metadata-matcher
+       pip3 install -r requirements.txt
+
+4. Run the metadata merger on the images
+
+       python3 src/merge_metadata.py <source_directory> <output_directory>
+
+
 ## Google photos takeout metadata merging into their images
 
 Original windows based version: [GooglePhotosMatcher](https://github.com/anderbggo/GooglePhotosMatcher)
@@ -37,7 +56,3 @@ optional arguments:
 - Pillow - Image Editor lib
 - pillow-heif - Image Editor lib HEIC (Apple) support
 - piexif - Adjust Metadata for image
-
-## Tutorial
-
-- [Migrate Google Photos to iCloud](migrate_photos.md)
